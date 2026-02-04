@@ -4,7 +4,14 @@ public class Pet {
     public String nome;
     public Tipo tipo;
     public Sexo sexo;
+    public Endereco endereco = new Endereco();
+    public Float idade;
+    public Float peso;
+    public String raca;
 
+    public Pet(){
+        this.endereco = new Endereco();
+    }
 
     public enum Tipo{
         CACHORRO,
@@ -12,7 +19,14 @@ public class Pet {
     }
 
     public enum Sexo{
-        MASCULINO,
-        FEMININO
+        MACHO,
+        FEMEA
     }
+
+    public class Endereco{
+        public String rua;
+        public String numeroDaCasa;
+        public String cidade;
+    }
+
 }
