@@ -1,5 +1,6 @@
 package cadastro;
 
+import javax.lang.model.util.SimpleTypeVisitor14;
 import javax.swing.*;
 import java.io.*;
 import java.util.Arrays;
@@ -72,17 +73,43 @@ public class Main {
                                 break;
 
                             case 1:
-                                pet1.tipo = Pet.Tipo.valueOf(resposta.toUpperCase());
+                                boolean nomePetValido = false;
+
+                                while (!nomePetValido){
+                                    try {
+                                        pet1.tipo = Pet.Tipo.valueOf(resposta.toUpperCase());
+                                        nomePetValido = true;
+                                    }catch(IllegalArgumentException e){
+                                        System.out.println("Digite cachorro ou gato!");
+                                        System.out.println(linha);
+                                        resposta = scanner.nextLine();
+                                    }
+                                }
+;
 
                                 break;
 
                             case 2:
-                                pet1.sexo = Pet.Sexo.valueOf(resposta.toUpperCase());
+                                boolean sexoPetValido = false;
+
+                                while (!sexoPetValido){
+                                    try{
+                                        pet1.sexo = Pet.Sexo.valueOf(resposta.toUpperCase());
+                                        sexoPetValido = true;
+                                    }catch(IllegalArgumentException e){
+                                        System.out.println("Digite Femea ou Macho!");
+                                        System.out.println(linha);
+                                        resposta = scanner.nextLine();
+                                    }
+                                }
                                 break;
 
                             case 3:
                                 System.out.print("Numero da Casa: ");
                                 pet1.endereco.numeroDaCasa = scanner.nextLine();
+                                if (pet1.endereco.numeroDaCasa.isEmpty()){
+                                    pet1.endereco.numeroDaCasa = Pet.enderecoNumeroNaoInformado;
+                                }
 
                                 System.out.print("Cidade: ");
                                 pet1.endereco.cidade = scanner.nextLine();
@@ -98,7 +125,9 @@ public class Main {
                                 }catch(NumberFormatException e){
                                     throw new NumberFormatException("Digite um numero na idade!");
                                 }
-
+                                if(pet1.idade > 20){
+                                    throw new IllegalArgumentException("Digite uma idade menor que 20!");
+                                }
                                 break;
 
                             case 5:
@@ -108,9 +137,19 @@ public class Main {
                                     throw new NumberFormatException("Digite um numero no peso!");
                                 }
 
+                                if (pet1.peso > 60 || pet1.peso < 0.5){
+                                    throw new IllegalArgumentException("Digite um peso valido!");
+                                }
+
                                 break;
                             case 6:
                                 pet1.raca = resposta;
+
+                                if (!(pet1.raca.matches("^[a-zA-z]+$"))){
+                                    throw new IllegalArgumentException("Sem numeros ou caracteres especiais!");
+                                }
+
+                                break;
                         }
                         i++;
                     }
