@@ -3,6 +3,8 @@ package cadastro;
 import javax.lang.model.util.SimpleTypeVisitor14;
 import javax.swing.*;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -26,6 +28,8 @@ public class Main {
 
         int escolha = 0;
         Scanner scan = new Scanner(System.in);
+        Pet pet1 = new Pet();
+
         while (escolha <= 0 || escolha > 6){
             System.out.println("=========================Digite=========================");
             System.out.println("1. Cadastrar um novo pet");
@@ -36,7 +40,7 @@ public class Main {
             System.out.println("6. Sair");
             escolha = scan.nextInt();
         }
-        switch (escolha){
+        switch (escolha) {
             case 1:
                 try {
                     formulario = new FileReader("C:\\Users\\João\\OneDrive\\Desktop\\Projetos\\desafioCadastro\\src\\cadastro\\formulario.txt");
@@ -48,7 +52,6 @@ public class Main {
                     String linha;
                     int i = 0;
                     Scanner scanner = new Scanner(System.in);
-                    Pet pet1 = new Pet();
 
                     while((linha = leitor.readLine()) != null){
 
@@ -159,5 +162,40 @@ public class Main {
                 }
                 break;
         }
+
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
+        String dataFormatada = agora.format(formatador);
+
+        File pasta = new File("petsCadastrados");
+        if(!pasta.exists()){
+            pasta.mkdir();
+        }
+
+        File file = new File(pasta, dataFormatada+"-"+pet1.nome.replace(" ", "").toUpperCase()+".txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try (BufferedWriter escrever = new BufferedWriter(new FileWriter(file))) {
+            escrever.write("1 - " + pet1.nome);
+            escrever.newLine();
+            escrever.write("2 - " + pet1.tipo);
+            escrever.newLine();
+            escrever.write("3 - " + pet1.sexo);
+            escrever.newLine();
+            escrever.write("4 - " + pet1.endereco.rua+", "+pet1.endereco.numeroDaCasa+", "+pet1.endereco.cidade);
+            escrever.newLine();
+            escrever.write("5 - " + pet1.idade+" anos");
+            escrever.newLine();
+            escrever.write("6 - " + pet1.peso+ "kg");
+            escrever.newLine();
+            escrever.write("7 - " + pet1.raca);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
