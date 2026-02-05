@@ -73,6 +73,7 @@ public class Main {
 
                             case 1:
                                 pet1.tipo = Pet.Tipo.valueOf(resposta.toUpperCase());
+
                                 break;
 
                             case 2:

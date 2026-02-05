@@ -10,7 +10,7 @@ Tive dificuldade na hora de fazer a logica de ler o formulario e pegar o input d
 por causa dos diferentes tipos de dados do objeto pet.
 
 ### 1.3
-fato engracado, pesquisei no google porque tinha colocado masculino e feminino em sexo do pet. Joguei
+fato engracado, pesquisei no google, porque tinha colocado masculino e feminino em sexo do pet. Joguei
 na pesquisa: "sexo de pet" na inocencia de aparecer macho e femea, veio a pior coisa.
 
 ## Perguntas que me fiz
