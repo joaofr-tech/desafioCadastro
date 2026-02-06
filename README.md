@@ -21,6 +21,25 @@ menos é o que acredito kkkk. Mas e muito bom ver os erros e exemplos do que voc
 na pratica, da uma sensacao foda de aprendizado, tipo: to passando pelas dificuldades e acumulando historias 
 pra contar, no final evoluir na carreira é ter um repertorio de historias de erros kkkk
 
+### 1.5
+codigo que funciona nao mexe. Eu tinha usado scan como global pra ler, e scanner como locar no case 1. Pra
+padronizar fui tentar trocar o nome e deixar so a instancia global. Massss quando tirava a instancia local o 
+codigo todo simplesmente parava.. deixa como ta entao
+
+### 1.6
+Essa linha simples deu um erro do cacete. 
+```Java            
+    System.out.print("Criterio(s): ");
+    int criterioDeEscolha = scan.nextInt();
+    
+    System.out.print("Tipo: ");
+    String criterioTipo = scan.nextLine();
+```
+Eu nao conseguia descobrir porque tava pulando a leitura do tipo. Dai quando fui pesquisar era porque o \n tinha "sobrado"
+da leitura anterior, ja que eu so queria um int. Dai o segondo scanner lia esse \n. Solucao: colocar mais um scanner pra 
+"capturar" esse \n, e assim poder ler o tipo. Esse bug era uma coisa que eu nunca ia descobrir se nao tivesse pesquisado, 
+porque tipo, nao era algo que tava no meu repertorio de possiveis causas do problema.. mas agora nunca mais esse bug me pega
+
 ## Perguntas que me fiz
 
 ### qual diferenca de tipos para wrappers?
