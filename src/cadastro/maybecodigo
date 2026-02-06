@@ -1,0 +1,15 @@
+        FileReader formulario;
+        try {
+            formulario = new FileReader("C:\\Users\\João\\OneDrive\\Desktop\\Projetos\\desafioCadastro\\src\\cadastro\\formulario.txt");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (BufferedReader leitor = new BufferedReader(formulario)) {
+            String linha;
+            while ((linha = leitor.readLine()) != null) {
+                System.out.println(linha);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }

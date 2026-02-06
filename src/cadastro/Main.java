@@ -10,38 +10,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        FileReader formulario;
-        try {
-            formulario = new FileReader("C:\\Users\\João\\OneDrive\\Desktop\\Projetos\\desafioCadastro\\src\\cadastro\\formulario.txt");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        try (BufferedReader leitor = new BufferedReader(formulario)) {
-            String linha;
-            while ((linha = leitor.readLine()) != null) {
-                System.out.println(linha);
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
 
         int escolha = 0;
         Scanner scan = new Scanner(System.in);
         Pet pet1 = new Pet();
 
-        while (escolha <= 0 || escolha > 6){
-            System.out.println("=========================Digite=========================");
+        while (escolha <= 0 || escolha > 5){
+            System.out.println("=========================MENU=========================");
             System.out.println("1. Cadastrar um novo pet");
-            System.out.println("2. Alterar os dados do pet cadastrado");
-            System.out.println("3. Deletar um pet cadastrado");
-            System.out.println("4. Listar todos os pets cadastrados");
-            System.out.println("5. Listar pets por algum critério (idade, nome, raça)");
-            System.out.println("6. Sair");
+            System.out.println("2. Buscar pet cadastrado");
+            System.out.println("3. Alterar dados de um pet");
+            System.out.println("4. Deletar pet cadastrado");
+            System.out.println("5. Sair");
             escolha = scan.nextInt();
         }
         switch (escolha) {
             case 1:
+                FileReader formulario;
                 try {
                     formulario = new FileReader("C:\\Users\\João\\OneDrive\\Desktop\\Projetos\\desafioCadastro\\src\\cadastro\\formulario.txt");
                 } catch (FileNotFoundException e) {
@@ -160,41 +145,45 @@ public class Main {
                 }catch (IOException e){
                     e.printStackTrace();
                 }
+                LocalDateTime agora = LocalDateTime.now();
+                DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
+                String dataFormatada = agora.format(formatador);
+
+                File pasta = new File("petsCadastrados");
+                if(!pasta.exists()){
+                    pasta.mkdir();
+                }
+
+                File file = new File(pasta, dataFormatada+"-"+pet1.nome.replace(" ", "").toUpperCase()+".txt");
+
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try (BufferedWriter escrever = new BufferedWriter(new FileWriter(file))) {
+                    escrever.write("1 - " + pet1.nome);
+                    escrever.newLine();
+                    escrever.write("2 - " + pet1.tipo);
+                    escrever.newLine();
+                    escrever.write("3 - " + pet1.sexo);
+                    escrever.newLine();
+                    escrever.write("4 - " + pet1.endereco.rua+", "+pet1.endereco.numeroDaCasa+", "+pet1.endereco.cidade);
+                    escrever.newLine();
+                    escrever.write("5 - " + pet1.idade+" anos");
+                    escrever.newLine();
+                    escrever.write("6 - " + pet1.peso+ "kg");
+                    escrever.newLine();
+                    escrever.write("7 - " + pet1.raca);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
-        }
+            case 2:
+                System.out.println("Vamos");
 
-        LocalDateTime agora = LocalDateTime.now();
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
-        String dataFormatada = agora.format(formatador);
-
-        File pasta = new File("petsCadastrados");
-        if(!pasta.exists()){
-            pasta.mkdir();
-        }
-
-        File file = new File(pasta, dataFormatada+"-"+pet1.nome.replace(" ", "").toUpperCase()+".txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try (BufferedWriter escrever = new BufferedWriter(new FileWriter(file))) {
-            escrever.write("1 - " + pet1.nome);
-            escrever.newLine();
-            escrever.write("2 - " + pet1.tipo);
-            escrever.newLine();
-            escrever.write("3 - " + pet1.sexo);
-            escrever.newLine();
-            escrever.write("4 - " + pet1.endereco.rua+", "+pet1.endereco.numeroDaCasa+", "+pet1.endereco.cidade);
-            escrever.newLine();
-            escrever.write("5 - " + pet1.idade+" anos");
-            escrever.newLine();
-            escrever.write("6 - " + pet1.peso+ "kg");
-            escrever.newLine();
-            escrever.write("7 - " + pet1.raca);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+                break;
         }
 
     }
