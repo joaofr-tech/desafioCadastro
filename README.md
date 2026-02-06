@@ -40,6 +40,10 @@ da leitura anterior, ja que eu so queria um int. Dai o segondo scanner lia esse 
 "capturar" esse \n, e assim poder ler o tipo. Esse bug era uma coisa que eu nunca ia descobrir se nao tivesse pesquisado, 
 porque tipo, nao era algo que tava no meu repertorio de possiveis causas do problema.. mas agora nunca mais esse bug me pega
 
+## 1.7
+comecei a ter problemas por cetralizar tudo no main, dai tentar colocar uma arquitetura minima ou organizacao de pastas. Foi
+um inferno, porque nao era mais uma coisa relacionada a codigo, era mudanca de caminho, referencia, erro em feature especifica
+
 ## Perguntas que me fiz
 
 ### qual diferenca de tipos para wrappers?

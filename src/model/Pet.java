@@ -1,4 +1,4 @@
-package cadastro;
+package model;
 
 public class Pet {
     public static final String enderecoNumeroNaoInformado = "NAO_INFORMADO";
