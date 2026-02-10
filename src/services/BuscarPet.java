@@ -9,15 +9,7 @@ public class BuscarPet{
     public void executar() {
         Pet pet2 = new Pet();
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Qual criterio de busca: ");
-        System.out.println("1 - Nome ou sobrenome ");
-        System.out.println("2 - Sexo ");
-        System.out.println("3 - Idade ");
-        System.out.println("4 - Peso ");
-        System.out.println("5 - Raça ");
-        System.out.println("6 - Endereço ");
-
+        // Tipo
         System.out.print("Tipo: ");
         String criterioTipo = scanner.nextLine();
 
@@ -34,23 +26,34 @@ public class BuscarPet{
             }
         }
 
+        // Criterio
+        System.out.println("Criterio de busca: ");
+        System.out.println("1 - Nome ou sobrenome ");
+        System.out.println("2 - Sexo ");
+        System.out.println("3 - Idade ");
+        System.out.println("4 - Peso ");
+        System.out.println("5 - Raça ");
+        System.out.println("6 - Endereço ");
+
+
         System.out.print("Criterio 1: ");
         int criterioDeEscolha1 = scanner.nextInt();
         scanner.nextLine();
-
-
 
         Pesquisa pesquisa = new Pesquisa();
         switch (criterioDeEscolha1){
             // nome
             case 1:
-                System.out.println("Nome: ");
+                System.out.print("Nome: ");
                 String nome = scanner.nextLine();
                 pesquisa.buscarNome(nome);
                 break;
 
             // Sexo
             case 2:
+                System.out.print("Sexo: ");
+                String sexo = scanner.nextLine();
+                pesquisa.buscarSexo(sexo);
                 break;
 
             // Idade

@@ -21,9 +21,10 @@ public class Main {
 
         while (escolha <= 0 || escolha > 5){
             printarMenu.executar();
-            System.out.print(": ");
+            System.out.print("Sua Escolha: ");
             escolha = scanner.nextInt();
         }
+
         switch (escolha) {
             case 1:
                 cadastrarPet.executar();
