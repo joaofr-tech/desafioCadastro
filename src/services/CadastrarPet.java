@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class CadastrarPet {
+public class CadastrarPet{
     public void executar() {
         Pet pet1 = new Pet();
 

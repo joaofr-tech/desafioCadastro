@@ -41,8 +41,9 @@ da leitura anterior, ja que eu so queria um int. Dai o segondo scanner lia esse 
 porque tipo, nao era algo que tava no meu repertorio de possiveis causas do problema.. mas agora nunca mais esse bug me pega
 
 ## 1.7
-comecei a ter problemas por cetralizar tudo no main, dai tentar colocar uma arquitetura minima ou organizacao de pastas. Foi
+comecei a ter problemas por centralizar tudo no main, dai tentar colocar uma arquitetura minima ou organizacao de pastas. Foi
 um inferno, porque nao era mais uma coisa relacionada a codigo, era mudanca de caminho, referencia, erro em feature especifica
+trocar codigo de lugar sem quebrar. 
 
 ## Perguntas que me fiz
 

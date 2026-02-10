@@ -1,6 +1,6 @@
 package model;
 
-public class Pet {
+public class Pet{
     public static final String enderecoNumeroNaoInformado = "NAO_INFORMADO";
     public String nome;
     public Tipo tipo;
