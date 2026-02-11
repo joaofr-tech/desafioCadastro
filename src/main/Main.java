@@ -1,6 +1,7 @@
 package main;
 
 import model.Pet;
+import services.AlterarPet;
 import services.BuscarPet;
 import services.CadastrarPet;
 import services.PrintarMenu;
@@ -32,6 +33,8 @@ public class Main {
             case 2:
                 buscarPet.executar();
                 break;
+            case 3:
+                AlterarPet.executar();
         }
 
     }
