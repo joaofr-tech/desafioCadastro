@@ -79,6 +79,9 @@ public class BuscarPet{
 
             // Endereco
             case 6:
+                System.out.print("Endereco: ");
+                String endereco = scanner.nextLine();
+                pesquisa.buscarEndereco(endereco);
                 break;
         }
     }
