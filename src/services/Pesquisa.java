@@ -97,4 +97,40 @@ public class Pesquisa {
             }
         }
     }
+    public void buscarPeso(float pesoPet){
+        File pasta = new File("petsCadastrados");
+        File[] files = pasta.listFiles();
+
+        int i = 0;
+        int j = 0;
+
+        for (File file: files) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+                String[] linhas = new String[7];
+                String linha;
+
+                while ((linha = bufferedReader.readLine()) != null) {
+                    linhas[i] = linha;
+                    i++;
+                }
+
+                String peso = linhas[5].substring(4, linhas[4].length() - 3);
+                float pesoComparacao = Float.parseFloat(peso);
+                if (pesoComparacao == pesoPet) {
+                    j++;
+                    System.out.print(j + ". " + linhas[0].replaceAll("^.{4}", "") + " ");
+
+                    for (int k = 1; k <= 6; k++) {
+                        System.out.print(linhas[k].replaceAll("^\\d", "") + " ");
+                    }
+                    System.out.println();
+                }
+                i = 0;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

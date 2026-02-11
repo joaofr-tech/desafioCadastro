@@ -58,17 +58,22 @@ public class BuscarPet{
 
             // Idade
             case 3:
-                System.out.println("Idade: ");
+                System.out.print("Idade: ");
                 int idade = scanner.nextInt();
                 pesquisa.buscarIdade(idade);
                 break;
 
             // Peso
             case 4:
+                System.out.print("Peso: ");
+                float peso = scanner.nextFloat();
+                pesquisa.buscarPeso(peso);
                 break;
 
             // Raca
             case 5:
+                System.out.print("Raca: ");
+                String raca = scanner.nextLine();
                 break;
 
             // Endereco
