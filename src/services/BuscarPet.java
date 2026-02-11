@@ -74,6 +74,7 @@ public class BuscarPet{
             case 5:
                 System.out.print("Raca: ");
                 String raca = scanner.nextLine();
+                pesquisa.buscarRaca(raca);
                 break;
 
             // Endereco
