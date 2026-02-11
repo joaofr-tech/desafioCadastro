@@ -58,6 +58,9 @@ public class BuscarPet{
 
             // Idade
             case 3:
+                System.out.println("Idade: ");
+                int idade = scanner.nextInt();
+                pesquisa.buscarIdade(idade);
                 break;
 
             // Peso

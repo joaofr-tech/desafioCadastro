@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.BufferOverflowException;
 
 public class Pesquisa {
     public void buscarNome(String nomePet){
@@ -58,6 +59,40 @@ public class Pesquisa {
                 }
                 i = 0;
             }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public void buscarIdade(int idadePet){
+        File pasta = new File("petsCadastrados");
+        File[] files = pasta.listFiles();
+
+        int i = 0;
+        int j = 0;
+
+        for (File file: files) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+                String[] linhas = new String[7];
+                String linha;
+
+                while ((linha = bufferedReader.readLine()) != null) {
+                    linhas[i] = linha;
+                    i++;
+                }
+
+                String idade = linhas[4].substring(4, linhas[4].length() - 5);
+                int idadeComparacao = Integer.parseInt(idade);
+                if (idadeComparacao == idadePet) {
+                    j++;
+                    System.out.print(j + ". " + linhas[0].replaceAll("^.{4}", "") + " ");
+
+                    for (int k = 1; k <= 6; k++) {
+                        System.out.print(linhas[k].replaceAll("^\\d", "") + " ");
+                    }
+                    System.out.println();
+                }
+                i = 0;
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

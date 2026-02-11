@@ -6,7 +6,7 @@ public class Pet{
     public Tipo tipo;
     public Sexo sexo;
     public Endereco endereco = new Endereco();
-    public Float idade;
+    public Integer idade;
     public Float peso;
     public String raca;
 

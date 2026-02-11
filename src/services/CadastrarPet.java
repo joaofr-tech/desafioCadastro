@@ -93,7 +93,7 @@ public class CadastrarPet{
 
                     case 4:
                         try {
-                            pet1.idade = Float.parseFloat(resposta);
+                            pet1.idade = Integer.parseInt(resposta);
                         } catch (NumberFormatException e) {
                             throw new NumberFormatException("Digite um numero na idade!");
                         }
