@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class BuscarPet{
-    public void executar() {
+    public File[] executar() {
         Pet pet2 = new Pet();
         Scanner scanner = new Scanner(System.in);
 
@@ -68,12 +68,14 @@ public class BuscarPet{
             case 3:
                 System.out.print("Idade: ");
                 idade = scanner.nextInt();
+                scanner.nextLine();
                 break;
 
             // Peso
             case 4:
                 System.out.print("Peso: ");
                 peso = scanner.nextFloat();
+                scanner.nextLine();
                 break;
 
             // Raca
@@ -145,6 +147,6 @@ public class BuscarPet{
             }
         }
         Pesquisa pesquisa = new Pesquisa();
-        pesquisa.buscarFiltros(tipo, nome, sexo, idade, peso, raca, endereco);
+        return pesquisa.buscarFiltros(tipo, nome, sexo, idade, peso, raca, endereco);
     }
 }
